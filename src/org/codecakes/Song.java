@@ -2,14 +2,14 @@ package org.codecakes;
 
 public class Song {
     private String title;
-    private Double duration;
+    private String duration;
 
-    public Song(String title, Double duration){
+    public Song(String title, String duration){
         this.title = title;
         this.duration = duration;
     }
 
-    public Double getDuration(){
+    public String getDuration(){
         return this.duration;
     }
 

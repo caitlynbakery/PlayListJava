@@ -7,9 +7,8 @@ public class Playlist {
     private ArrayList<Album> albumArrayList;
     private LinkedList<Song> songLinkedList = new LinkedList<>();
 
-    public Playlist(ArrayList<Album> albums){
-        this.albumArrayList = albums;
-
+    public Playlist(ArrayList<Album> albumArrayList){
+this.albumArrayList = albumArrayList;
     }
 
     public LinkedList<Song> getSongLinkedList() {
