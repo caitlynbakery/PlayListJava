@@ -19,7 +19,7 @@ this.albumArrayList = albumArrayList;
         if(checkSong(song.getTitle()) == null){
             System.out.println("Song does not appear in album");
         }else{
-            System.out.println("adding song");
+         //   System.out.println("adding song");
             songLinkedList.add(song);
         }
 
