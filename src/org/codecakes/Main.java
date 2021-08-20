@@ -19,6 +19,7 @@ public class Main {
         playlist.addSong(new Song("Magic", "2:40"));
         playlist.addSong(new Song("Anti-Romantic", "3:36"));
         playlist.addSong(new Song("Diggity", "3:30"));
+        playlist.addSong(new Song("Bungee", "3:29"));
         playlist.printPlaylist();
         menuOfOptions();
         boolean quit = false;
@@ -35,42 +36,54 @@ public class Main {
                     break;
                 case 1:
                     //next
-                    if(listIterator.hasNext()){
+                    if (listIterator.hasNext()) {
 
 
-                    if(!goingForward){
+                        if (!goingForward) {
 
-                        listIterator.next();
-                        System.out.println("current song is " + listIterator.next().getTitle());
-                        goingForward = true;
-                    } else{
-                        System.out.println("current song is " + listIterator.next().getTitle());
-                    }} else{
+                            listIterator.next();
+                            System.out.println("current song is " + listIterator.next().getTitle());
+                            goingForward = true;
+                        } else {
+                            System.out.println("current song is " + listIterator.next().getTitle());
+                        }
+                    } else {
                         System.out.println("You've reached the end of the list");
                     }
 
                     break;
                 case 2:
-                    if(listIterator.hasPrevious()){
-                        if(goingForward){
+                    if (listIterator.hasPrevious()) {
+                        if (goingForward) {
+
                             listIterator.previous();
-                            System.out.println("current song is " + listIterator.previous().getTitle());
+                            if (listIterator.hasPrevious()) {
+
+                                System.out.println("current song is " + listIterator.previous().getTitle());
+
+                            }else {
+                                System.out.println("At beginning of list");
+                            }
+
+
                             goingForward = false;
-                        } else{
+                        } else {
+
                             System.out.println("current song is " + listIterator.previous().getTitle());
+
+
                         }
-                    } else{
+                    } else {
                         System.out.println("You've reached the start of the list");
                     }
 
 
-
                     break;
                 case 3:
-                    if(goingForward){
+                    if (goingForward) {
                         listIterator.previous();
                         System.out.println("playing " + listIterator.next().getTitle());
-                    } else{
+                    } else {
                         listIterator.next();
                         System.out.println("playing " + listIterator.previous().getTitle());
                     }
@@ -84,20 +97,34 @@ public class Main {
                     listIterator.remove();
 
                     //does not work :(
-                    if (!goingForward){
-                        if(listIterator.hasNext()){
-                            System.out.println("now playing " + listIterator.next().getTitle());
-                            listIterator.next();
+                    if (!goingForward) {
+                        if (listIterator.hasPrevious()) {
+                            //going backwards and has previous
+                            System.out.println("BACKWARDS AND HAS PREVIOUS");
+                            System.out.println("playing " + listIterator.previous().getTitle());
 
-                            goingForward = true;
+
+                        } else {
+                            //going backwards and at start of list
+                            System.out.println("BACKWARDS AND START OF LIST");
+                            listIterator.next();
+//                            System.out.println("playing " + listIterator.next().getTitle());
+                            System.out.println("playing " + listIterator.previous().getTitle());
+
+
                         }
 
-                    } else{
-                        if(listIterator.hasPrevious()){
-                            System.out.println("now playing " + listIterator.previous().getTitle());
+                    } else {
+                        if (listIterator.hasNext()) {
+                        //going forwards and has next
+                            System.out.println("Going forwards and has next");
+                            System.out.println("playing " + listIterator.next().getTitle());
+                        } else {
+                            //going forwards and at end of list
+                            System.out.println("Going forwards and at end of list");
                             listIterator.previous();
+                            System.out.println("playing " + listIterator.next().getTitle());
 
-                            goingForward = false;
                         }
 
                     }
